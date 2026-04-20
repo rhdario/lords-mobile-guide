@@ -1,0 +1,16 @@
+{
+    "name": "Lords Mobile Guide Hub",
+    "short_name": "LM Hub",
+    "description": "Central de herramientas y estrategias para Lords Mobile",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#0a0a12",
+    "theme_color": "#ffcc33",
+    "icons": [
+        {
+            "src": "img/hub_bg.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

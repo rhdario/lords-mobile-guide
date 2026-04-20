@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+    --primary-gold: #ffcc33;
+    --secondary-gold: #d4af37;
+    --accent-blue: #00d2ff;
+    --bg-dark: #0a0a12;
+    --card-bg: rgba(20, 20, 35, 0.7);
+    --text-light: #f0f0f0;
+    --text-dim: #b0b0b0;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow-glow: 0 0 20px rgba(255, 204, 51, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(rgba(10, 10, 18, 0.8), rgba(10, 10, 18, 0.9)), 
+                url('img/hub_bg.png') no-repeat center center/cover;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hub-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hub-logo {
+    width: 120px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(255, 204, 51, 0.4));
+}
+
+.header-text {
+    text-align: left;
+}
+
+h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.2rem;
+    filter: drop-shadow(0 0 10px rgba(255, 204, 51, 0.2));
+}
+
+.subtitle {
+    color: var(--accent-blue);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+    perspective: 1000px;
+}
+
+.hub-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.hub-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.hub-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.hub-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--primary-gold);
+    box-shadow: var(--shadow-glow);
+}
+
+.hub-card:hover::before {
+    left: 100%;
+}
+
+.icon-wrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 2.5rem;
+    transition: all 0.4s ease;
+    border: 3px solid var(--primary-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-fortaleza {
+    background: url('img/boton_fortalezas.png') center/cover no-repeat;
+}
+
+.icon-caceria {
+    background: url('img/boton_caceria.webp') center/250% no-repeat;
+}
+
+.icon-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+    z-index: 0;
+}
+
+.icon-wrapper span {
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
+}
+
+.hub-card:hover .icon-wrapper {
+    transform: rotate(10deg) scale(1.1);
+    box-shadow: 0 0 15px var(--primary-gold);
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--primary-gold);
+}
+
+.card-desc {
+    color: var(--text-dim);
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+.btn-enter {
+    margin-top: 1.5rem;
+    padding: 0.6rem 2rem;
+    background: transparent;
+    border: 2px solid var(--primary-gold);
+    color: var(--primary-gold);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.hub-card:hover .btn-enter {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+}
+
+footer {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    .hub-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .header-text {
+        text-align: center;
+    }
+    .hub-logo {
+        width: 80px;
+    }
+    .hub-grid {
+        grid-template-columns: 1fr;
+    }
+}

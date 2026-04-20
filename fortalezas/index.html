@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador de Fortaleza Oscura</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="nav-bar">
+                <a href="../index.html" class="back-link">← Volver al Hub</a>
+            </div>
+            <h1>Analizador de Fortaleza Oscura</h1>
+            <p>Calcula tu estrategia de ataque perfecta</p>
+        </header>
+
+        <main>
+            <!-- SECCIÓN 1: DATOS BASE -->
+            <section class="card glass-panel">
+                <h2>1. Datos Base</h2>
+                <div class="input-group-row">
+                    <div class="input-group">
+                        <label for="rallySize">Tu Tamaño Máximo de Agrupación</label>
+                        <input type="text" inputmode="numeric" id="rallySize" placeholder="Ej: 2000000"
+                            style="background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);color:white;padding:12px;border-radius:6px;font-family:'Roboto',sans-serif;font-size:1rem;outline:none;transition:border-color 0.3s;width:100%;">
+                        <small style="color:#aaa;">Capacidad total de tu ataque.<br>⚠️ <em>Posiblemente tendrás que
+                                modificar este número luego de conocer qué héroes mandar de acuerdo al nivel de los
+                                mismos.</em></small>
+                    </div>
+                </div>
+                <div class="input-group-row">
+                    <div class="input-group">
+                        <label for="fortressLevel">Nivel de Fortaleza</label>
+                        <select id="fortressLevel">
+                            <option value="1">Nivel 1</option>
+                            <option value="2">Nivel 2</option>
+                            <option value="3">Nivel 3</option>
+                            <option value="4">Nivel 4</option>
+                            <option value="5" selected>Nivel 5</option>
+                            <option value="6">Nivel 6</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="essenceLevel">Nivel de Esencia</label>
+                        <input type="number" id="essenceLevel" placeholder="1-25" min="1" max="25">
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: TROPAS ENEMIGAS -->
+            <section class="card glass-panel">
+                <h2>2. Tropas Enemigas (Cantidades exactas)</h2>
+                <p class="subtitle">Ingresa la cantidad de tropas detectadas en el reporte.</p>
+                <div class="troops-table-container" style="overflow-x: auto;">
+                    <table class="troops-table"
+                        style="width: 100%; border-collapse: collapse; text-align: center; margin-top: 10px;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--border-glass);">
+                                <th style="padding: 10px; color: #aaa;">Tipo / Tier</th>
+                                <th style="padding: 10px; color: #ccc;">T1</th>
+                                <th style="padding: 10px; color: #ccc;">T2</th>
+                                <th style="padding: 10px; color: #ccc;">T3</th>
+                                <th style="padding: 10px; color: #ccc;">T4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Infantería -->
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 10px; text-align: left;"><img src="img/troop/Infantry.png"
+                                        style="width:28px; vertical-align:middle; margin-right:8px;"> <strong
+                                        style="color:var(--c-inf)">Infantería</strong></td>
+                                <td><input type="text" inputmode="numeric" id="inf_t1" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="inf_t2" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="inf_t3" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="inf_t4" placeholder="0"
+                                        class="troop-qty-input"></td>
+                            </tr>
+                            <!-- Artillería -->
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 10px; text-align: left;"><img src="img/troop/Artillery.png"
+                                        style="width:28px; vertical-align:middle; margin-right:8px;"> <strong
+                                        style="color:var(--c-art)">Artillería</strong></td>
+                                <td><input type="text" inputmode="numeric" id="art_t1" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="art_t2" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="art_t3" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="art_t4" placeholder="0"
+                                        class="troop-qty-input"></td>
+                            </tr>
+                            <!-- Caballería -->
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 10px; text-align: left;"><img src="img/troop/Cavalry.png"
+                                        style="width:28px; vertical-align:middle; margin-right:8px;"> <strong
+                                        style="color:var(--c-cav)">Caballería</strong></td>
+                                <td><input type="text" inputmode="numeric" id="cav_t1" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="cav_t2" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="cav_t3" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="cav_t4" placeholder="0"
+                                        class="troop-qty-input"></td>
+                            </tr>
+                            <!-- Asedio -->
+                            <tr>
+                                <td style="padding: 10px; text-align: left;"><img src="img/troop/Siege.png"
+                                        style="width:28px; vertical-align:middle; margin-right:8px;"> <strong
+                                        style="color:var(--c-siege)">Asedio</strong></td>
+                                <td><input type="text" inputmode="numeric" id="siege_t1" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="siege_t2" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="siege_t3" placeholder="0"
+                                        class="troop-qty-input"></td>
+                                <td><input type="text" inputmode="numeric" id="siege_t4" placeholder="0"
+                                        class="troop-qty-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: LÍDERES ENEMIGOS -->
+            <section class="card glass-panel">
+                <h2>3. Líderes Enemigos</h2>
+                <p class="subtitle">Selecciona los monstruos enemigos. <strong style="color:var(--gold)">El primer
+                        monstruo que selecciones será marcado como el "Capitán" (👑)</strong> para predecir la falange
+                    enemiga.</p>
+
+                <div class="tabs">
+                    <button class="tab-btn active" data-target="tab-inf">Infantería</button>
+                    <button class="tab-btn" data-target="tab-art">Artillería</button>
+                    <button class="tab-btn" data-target="tab-cav">Caballería</button>
+                    <button class="tab-btn" data-target="tab-siege">Asedio</button>
+                </div>
+
+                <div class="tab-content active" id="tab-inf">
+                    <div class="heroes-grid" id="heroes-inf"></div>
+                </div>
+                <div class="tab-content" id="tab-art">
+                    <div class="heroes-grid" id="heroes-art"></div>
+                </div>
+                <div class="tab-content" id="tab-cav">
+                    <div class="heroes-grid" id="heroes-cav"></div>
+                </div>
+                <div class="tab-content" id="tab-siege">
+                    <div class="heroes-grid" id="heroes-siege"></div>
+                </div>
+
+                <div class="selected-heroes-bar" style="display: flex; justify-content: space-between;">
+                    <span id="captain-info" style="color: #ccc;">Capitán: <span
+                            style="color:#ff4757">Ninguno</span></span>
+                    <span>Líderes seleccionados: <span id="selected-count">0</span></span>
+                </div>
+            </section>
+
+            <!-- ACCIÓN -->
+            <div class="action-section">
+                <button id="calculateBtn" class="epic-btn">Generar Estrategia</button>
+                <button id="resetBtn" class="epic-btn reset-btn"
+                    style="margin-left: 15px; background: linear-gradient(to right, #8b3dff, #5c20c4);">Limpiar
+                    Todo</button>
+            </div>
+
+            <!-- RESULTADO -->
+            <section class="result-container" id="resultContainer" style="display: none;">
+                <h2>Estrategia Recomendada</h2>
+                <div class="result-content" id="resultContent">
+                    <!-- Generado por JS -->
+                </div>
+                <h3>Héroes Sugeridos (Para ti)</h3>
+                <div id="suggestedHeroes" style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Generado por JS -->
+                </div>
+                <h3 style="margin-top: 25px;">🐉 Monstruitos Sugeridos (Familiars)</h3>
+                <div id="suggestedFamiliars" style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Generado por JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer style="text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border-glass); margin-top: 40px;">
+        &copy; Lords Mobile Rally Guide - by knayus
+    </footer>
+    <script src="app.js"></script>
+</body>
+
+</html>
