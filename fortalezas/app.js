@@ -1,20 +1,4 @@
 
-// SEGURIDAD: Bloqueo de Dominio para evitar clonación no autorizada
-if (window.location.hostname !== "lords-mobile-guide.netlify.app" && 
-    window.location.hostname !== "localhost" && 
-    window.location.hostname !== "127.0.0.1" &&
-    window.location.hostname !== "") { // Permite abrir como archivo local (file://)
-    document.body.innerHTML = `
-        <div style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #07050d; color: #ffcc33; font-family: sans-serif; text-align: center; padding: 20px;">
-            <h1 style="font-size: 3rem;">⚠️ ACCESO NO AUTORIZADO</h1>
-            <p style="font-size: 1.2rem; color: #999;">Esta es una copia no autorizada de la Guía de Lords Mobile.</p>
-            <p style="margin-top: 20px;">Por favor, visita la versión oficial en:</p>
-            <a href="https://lords-mobile-guide.netlify.app" style="color: #ffcc33; text-decoration: underline; font-weight: bold; font-size: 1.5rem;">lords-mobile-guide.netlify.app</a>
-        </div>
-    `;
-    throw new Error("Acceso no autorizado"); // Detiene la ejecución del resto del script
-}
-
 // Base de datos de Héroes del Jugador
 // PRIORIDAD: ATQ puro de tropa > ATQ Ejército (relleno) > P2P
 // Las imágenes están en subcarpetas: img/hero/{folder}/{id}.webp

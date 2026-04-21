@@ -107,9 +107,6 @@ Estructura JSON embebida en `caceria/index.html`:
 - **Nuevos Héroes:** Añadir a `heroesDB` en `fortalezas/app.js` y a `HEROES_DATA` en `caceria/index.html`.
 - **Actualización de Drops:** Los datos de cacería provienen de una extracción de Excel (lógica documentada en el resumen original de Cacería).
 
-### Seguridad:
-- **Domain Lock:** La aplicación incluye un script de protección en `fortalezas/app.js` que impide su ejecución en dominios no autorizados. Solo funciona en `lords-mobile-guide.netlify.app`, `localhost` y `127.0.0.1`.
-
 ---
 © Lords Mobile Guide - by knayus  
 **Versión Final Unificada:** 1.2 (Abril 2026)
