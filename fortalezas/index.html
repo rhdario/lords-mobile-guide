@@ -193,8 +193,11 @@
             <!-- ACCIÓN -->
             <div class="action-section">
                 <button id="calculateBtn" class="epic-btn">Generar Estrategia</button>
+                <button id="tipsBtn" class="epic-btn tips-btn"
+                    style="margin-left: 10px; background: linear-gradient(to right, #f1c40f, #f39c12); color: #1a1a3e;">💡
+                    Tips</button>
                 <button id="resetBtn" class="epic-btn reset-btn"
-                    style="margin-left: 15px; background: linear-gradient(to right, #8b3dff, #5c20c4);">Limpiar
+                    style="margin-left: 10px; background: linear-gradient(to right, #8b3dff, #5c20c4);">Limpiar
                     Todo</button>
             </div>
 
@@ -214,6 +217,48 @@
                 </div>
             </section>
         </main>
+    </div>
+ 
+    <!-- MODAL DE TIPS -->
+    <div id="tipsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💡 Consejos Estratégicos</h3>
+                <button class="close-btn" id="closeTips">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="tip-section">
+                    <h4>📊 Requisitos de Estadísticas (Stats)</h4>
+                    <ul>
+                        <li><strong>Fortaleza Nivel 5:</strong> Recomendado ~330% ATQ / 145% PS (Vida).</li>
+                        <li><strong>Fortaleza Nivel 6:</strong> Recomendado ~480% ATQ / 300% PS (Vida).</li>
+                        <li><strong>Modo Seguro:</strong> Con +500% de ATQ (Ejército o Tropa) las victorias son mucho más consistentes.</li>
+                    </ul>
+                </div>
+                <div class="tip-section">
+                    <h4>🛡️ Clasificación de Dificultad (Tiers)</h4>
+                    <ul>
+                        <li><strong>Tier 1 (Fácil/Media):</strong> Mezcla de T3 y T4. Si tiene mucha T3 es la más sencilla de derrotar.</li>
+                        <li><strong>Tier 2 (Difícil):</strong> Contiene solo T4. Requiere stats más altos y mejor coordinación.</li>
+                    </ul>
+                </div>
+                <div class="tip-section">
+                    <h4>🐉 El "Colchón" (Cebo) y Familiares</h4>
+                    <p>El envío de pequeñas cantidades de otras tropas sirve para:</p>
+                    <ul>
+                        <li>Absorber el daño inicial de la muralla y trampas.</li>
+                        <li><strong>Activar habilidades enemigas:</strong> Familiares como Pyris se activan al inicio; el colchón recibe ese golpe protegiendo a tu tropa principal.</li>
+                    </ul>
+                </div>
+                <div class="tip-section">
+                    <h4>🤝 Consejos de Gremio</h4>
+                    <ul>
+                        <li><strong>Auto-fill:</strong> No confíes ciegamente en lo que envía el juego. Pide a tus aliados tipos específicos de tropa si el rally se desbalancea.</li>
+                        <li><strong>Héroes:</strong> Prioriza siempre héroes dorados de ATQ. Si no tienes los específicos, usa universales (ej. Observador, Rosa).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer

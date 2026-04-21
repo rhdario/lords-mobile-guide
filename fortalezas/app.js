@@ -213,6 +213,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    // Tips Modal logic
+    const tipsModal = document.getElementById("tipsModal");
+    const tipsBtn = document.getElementById("tipsBtn");
+    const closeTips = document.getElementById("closeTips");
+
+    tipsBtn.addEventListener("click", () => tipsModal.style.display = "block");
+    closeTips.addEventListener("click", () => tipsModal.style.display = "none");
+    window.addEventListener("click", (e) => {
+        if (e.target === tipsModal) tipsModal.style.display = "none";
+    });
 });
 
 function renderMonsters(category, containerId) {
@@ -398,8 +408,19 @@ function calculateStrategy() {
         sendStr = `1 TIPO DE TROPA (${mainPct}% ${mainCounter.name}${hasSiege ? " + 5% Asedio" : ""})`;
 
         let siegeAmt = 0;
-        let buffersAmt = 8; // 4 + 4 tropas cebo
         let mainAmt = 0;
+
+        // Escalar colchón (cebo) según nivel de fortaleza
+        // F1-F4: 4+4 tropas (fijo)
+        // F5-F6: 0.1% del rally para absorber habilidades de familiares (Pyris, etc.)
+        // Siempre en múltiplos de 4 para eficiencia de batallones (4, 8, 12, 16...)
+        let buffersAmtPerType = 4;
+        if (fortressLevel >= 5 && rallySizeInput > 0) {
+            let rawBuffer = rallySizeInput * 0.001; // 0.1% del rally
+            buffersAmtPerType = Math.max(4, Math.ceil(rawBuffer / 4) * 4); 
+            if (buffersAmtPerType > 2000) buffersAmtPerType = 2000; 
+        }
+        let buffersAmt = buffersAmtPerType * 2; 
 
         if (rallySizeInput) {
             siegeAmt = hasSiege ? Math.round(rallySizeInput * 0.05) : 0;
@@ -417,7 +438,7 @@ function calculateStrategy() {
         bufferHtml = `
             <div style="margin-top: 15px; padding: 10px; background: rgba(255, 71, 87, 0.1); border-left: 3px solid var(--red-alert); text-align: left; border-radius: 4px;">
                 <strong style="color: var(--red-alert);">🛡️ Táctica de Cebo (Colchón):</strong><br>
-                <span style="font-size: 0.95rem; color: #ccc;">Añade <strong>4 tropas de ${buffers[0].n}</strong> y <strong>4 tropas de ${buffers[1].n}</strong> mínimo T3 (T1/T2 bajan la moral) a tu agrupación para que absorban el daño de los héroes enemigos.</span>
+                <span style="font-size: 0.95rem; color: #ccc;">Añade <strong>${new Intl.NumberFormat('es-ES').format(buffersAmtPerType)} tropas de ${buffers[0].n}</strong> y <strong>${new Intl.NumberFormat('es-ES').format(buffersAmtPerType)} tropas de ${buffers[1].n}</strong> mínimo T3 (T1/T2 bajan la moral) a tu agrupación para que absorban el daño de los héroes y familiares enemigos.</span>
             </div>
         `;
 
@@ -428,7 +449,14 @@ function calculateStrategy() {
         let pctSecCounter = 100 - pctMainCounter;
 
         let siegeAmt = 0;
-        let buffersAmt = 4; // 1 buffer de 4 tropas
+
+        // Escalar colchón (cebo) para mixtos
+        let buffersAmt = 4;
+        if (fortressLevel >= 5 && rallySizeInput > 0) {
+            let rawBuffer = rallySizeInput * 0.001;
+            buffersAmt = Math.max(4, Math.ceil(rawBuffer / 4) * 4);
+            if (buffersAmt > 2000) buffersAmt = 2000;
+        }
 
         let availableRally = rallySizeInput || 0;
         if (hasSiege && availableRally > 0) {
@@ -456,7 +484,7 @@ function calculateStrategy() {
         bufferHtml = `
             <div style="margin-top: 15px; padding: 10px; background: rgba(255, 71, 87, 0.1); border-left: 3px solid var(--red-alert); text-align: left; border-radius: 4px;">
                 <strong style="color: var(--red-alert);">🛡️ Táctica de Cebo (Colchón):</strong><br>
-                <span style="font-size: 0.95rem; color: #ccc;">Añade <strong>4 tropas de ${buffers[0].n}</strong> mínimo T3 (T1/T2 bajan la moral) a tu agrupación para que absorban el daño de los héroes enemigos.</span>
+                <span style="font-size: 0.95rem; color: #ccc;">Añade <strong>${new Intl.NumberFormat('es-ES').format(buffersAmt)} tropas de ${buffers[0].n}</strong> mínimo T3 (T1/T2 bajan la moral) a tu agrupación para que absorban el daño de los héroes y familiares enemigos.</span>
             </div>
         `;
     }

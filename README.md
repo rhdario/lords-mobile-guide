@@ -16,9 +16,10 @@
 3.  **Líderes Enemigos:** Selecciona los héroes que aparecen como líderes en la fortaleza. El primero que selecciones será el **Capitán** (marcado con 👑).
 4.  **¡Generar!:** Pulsa el botón dorado y obtendrás:
     -   La **Composición de Tropas** exacta (redondeada a "k" para mayor claridad).
-    -   La **Táctica de Cebo (Cushion)** para que tus tropas no pierdan moral.
+    -   La **Táctica de Cebo (Cushion)** para que tus tropas no pierdan moral (ahora con escalado dinámico según tu capacidad).
     -   Las **Formaciones** recomendadas (Falange o Cuña) para proteger a tu tropa principal.
     -   Los **Héroes y Familiars** ideales para el counter.
+5.  **Tips de Estrategia 💡:** Haz clic en la bombilla para ver requisitos de estadísticas, tipos de fortalezas y consejos avanzados de combate.
 
 ---
 

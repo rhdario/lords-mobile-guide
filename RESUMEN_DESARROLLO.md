@@ -1,4 +1,4 @@
-# 📋 RESUMEN TÉCNICO COMPLETO - Lords Mobile Guide Hub v1.1
+# 📋 RESUMEN TÉCNICO COMPLETO - Lords Mobile Guide Hub v1.2
 
 Este documento contiene la especificación técnica completa necesaria para replicar, clonar o mantener la plataforma unificada desde cero.
 
@@ -59,10 +59,14 @@ Este documento contiene la especificación técnica completa necesaria para repl
 2. **Algoritmo de Composición:**
    - **Unitropa:** Si la segunda tropa enemiga es < 20% del total. Envía 95% counter + 5% asedio (Nivel 5+).
    - **Bitropa (Mixto):** Si la segunda tropa es ≥ 20%. Proporción balanceada según pesos, restando el 5% de asedio del total disponible antes de repartir entre tropa principal y secundaria para evitar errores de redondeo.
-   - **Cebo (Cushion):** Envío automático de 4 tropas de cada tipo NO principal (Mínimo T3 para evitar pérdida de moral).
-3. **Influencia de Líderes:** Cada líder seleccionado añade un +25% de peso al tipo de tropa correspondiente en el cálculo de poder.
+   - **Cebo (Cushion) Dinámico:** 
+       - F1-F4: Envío fijo de 4 tropas de cada tipo NO principal.
+       - F5-F6: Escalado al **0.1% del rally** para absorber habilidades de familiares enemigos (ej. Pyris).
+       - **Lógica de Batallones:** Todas las cantidades de cebo se redondean al **múltiplo de 4 superior** para asegurar eficiencia en los grupos de combate del juego.
+3. **Influencia de Líderes:** Cada líder seleccionado añade un +25% de peso al tipo de tropa correspondiente en el cálculo de poder. El primer líder seleccionado se marca como **Capitán** (👑), determinando la falange enemiga probable.
 4. **Formaciones:** Sugiere Falange y Cuña posicionando la tropa counter en la fila trasera (Detrás).
 5. **Redondeo "k":** Las cantidades finales se redondean al millar más cercano (ej: 153.5k -> 154k) para facilitar el ingreso manual en el juego.
+6. **Tips Estratégicos 💡:** Sistema de modal informativo con requisitos de estadísticas (ATQ/PS) y consejos de gestión de gremio.
 
 ### 3.2 Formateo de Inputs
 - **K/M System:** Los campos de texto aceptan y muestran sufijos (ej: `2.5M`, `500k`). Se procesa mediante `parseFormatted` y se muestra en `blur`.
@@ -105,4 +109,4 @@ Estructura JSON embebida en `caceria/index.html`:
 
 ---
 © Lords Mobile Guide - by knayus  
-**Versión Final Unificada:** 1.1 (Abril 2026)
+**Versión Final Unificada:** 1.2 (Abril 2026)
