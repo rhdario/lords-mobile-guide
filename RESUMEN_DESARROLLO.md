@@ -66,7 +66,7 @@ Este documento contiene la especificación técnica completa necesaria para repl
 3. **Influencia de Líderes:** Cada líder seleccionado añade un +25% de peso al tipo de tropa correspondiente en el cálculo de poder. El primer líder seleccionado se marca como **Capitán** (👑), determinando la falange enemiga probable.
 4. **Formaciones:** Sugiere Falange y Cuña posicionando la tropa counter en la fila trasera (Detrás).
 5. **Redondeo "k":** Las cantidades finales se redondean al millar más cercano (ej: 153.5k -> 154k) para facilitar el ingreso manual en el juego.
-6. **Tips Estratégicos 💡:** Sistema de modal informativo con requisitos de estadísticas (ATQ/PS) y consejos de gestión de gremio.
+6. **Tips Estratégicos 💡:** Sistema de modal informativo con requisitos de estadísticas (ATQ/PS), consejos de gestión de gremio y el **Protocolo de Prueba y Error** (atacar, analizar reporte y ajustar formación).
 
 ### 3.2 Formateo de Inputs
 - **K/M System:** Los campos de texto aceptan y muestran sufijos (ej: `2.5M`, `500k`). Se procesa mediante `parseFormatted` y se muestra en `blur`.
