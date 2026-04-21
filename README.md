@@ -12,10 +12,10 @@
 
 ### ¿Cómo usarlo?
 1.  **Datos Base:** Ingresa tu **Tamaño de Agrupación (Rally)**. No te preocupes por los ceros, ¡puedes escribir `2M` o `500k`!
-2.  **Tropas Enemigas:** Introduce las cantidades que ves en el reporte de exploración.
+2.  **Tropas Enemigas:** Introduce las cantidades que ves en el reporte de exploración. Ahora incluye soporte para tropas **T5**.
 3.  **Líderes Enemigos:** Selecciona los héroes que aparecen como líderes en la fortaleza. El primero que selecciones será el **Capitán** (marcado con 👑).
 4.  **¡Generar!:** Pulsa el botón dorado y obtendrás:
-    -   La **Composición de Tropas** exacta.
+    -   La **Composición de Tropas** exacta (redondeada a "k" para mayor claridad).
     -   La **Táctica de Cebo (Cushion)** para que tus tropas no pierdan moral.
     -   Las **Formaciones** recomendadas (Falange o Cuña) para proteger a tu tropa principal.
     -   Los **Héroes y Familiars** ideales para el counter.

@@ -1,4 +1,4 @@
-# 📋 RESUMEN TÉCNICO COMPLETO - Lords Mobile Guide Hub v1.0
+# 📋 RESUMEN TÉCNICO COMPLETO - Lords Mobile Guide Hub v1.1
 
 Este documento contiene la especificación técnica completa necesaria para replicar, clonar o mantener la plataforma unificada desde cero.
 
@@ -58,10 +58,11 @@ Este documento contiene la especificación técnica completa necesaria para repl
    - Artillería ← Infantería
 2. **Algoritmo de Composición:**
    - **Unitropa:** Si la segunda tropa enemiga es < 20% del total. Envía 95% counter + 5% asedio (Nivel 5+).
-   - **Bitropa:** Si la segunda tropa es ≥ 20%. Proporción balanceada según pesos.
+   - **Bitropa (Mixto):** Si la segunda tropa es ≥ 20%. Proporción balanceada según pesos, restando el 5% de asedio del total disponible antes de repartir entre tropa principal y secundaria para evitar errores de redondeo.
    - **Cebo (Cushion):** Envío automático de 4 tropas de cada tipo NO principal (Mínimo T3 para evitar pérdida de moral).
 3. **Influencia de Líderes:** Cada líder seleccionado añade un +25% de peso al tipo de tropa correspondiente en el cálculo de poder.
 4. **Formaciones:** Sugiere Falange y Cuña posicionando la tropa counter en la fila trasera (Detrás).
+5. **Redondeo "k":** Las cantidades finales se redondean al millar más cercano (ej: 153.5k -> 154k) para facilitar el ingreso manual en el juego.
 
 ### 3.2 Formateo de Inputs
 - **K/M System:** Los campos de texto aceptan y muestran sufijos (ej: `2.5M`, `500k`). Se procesa mediante `parseFormatted` y se muestra en `blur`.
@@ -104,4 +105,4 @@ Estructura JSON embebida en `caceria/index.html`:
 
 ---
 © Lords Mobile Guide - by knayus  
-**Versión Final Unificada:** 1.0 (Abril 2026)
+**Versión Final Unificada:** 1.1 (Abril 2026)
