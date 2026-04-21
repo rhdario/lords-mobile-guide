@@ -322,7 +322,8 @@ function calculateStrategy() {
         return parseFormatted(document.getElementById(`${type}_t1`).value) +
             parseFormatted(document.getElementById(`${type}_t2`).value) +
             parseFormatted(document.getElementById(`${type}_t3`).value) +
-            parseFormatted(document.getElementById(`${type}_t4`).value);
+            parseFormatted(document.getElementById(`${type}_t4`).value) +
+            parseFormatted(document.getElementById(`${type}_t5`).value);
     };
 
     const qtyInf = getSum("inf");
@@ -429,21 +430,24 @@ function calculateStrategy() {
         let siegeAmt = 0;
         let buffersAmt = 4; // 1 buffer de 4 tropas
 
-        if (hasSiege) {
-            pctMainCounter -= 5;
-            if (pctMainCounter < 0) pctMainCounter = 0;
+        let availableRally = rallySizeInput || 0;
+        if (hasSiege && availableRally > 0) {
+            siegeAmt = Math.round(availableRally * 0.05);
+            availableRally -= siegeAmt;
         }
 
-        let amtMain = rallySizeInput ? Math.round(rallySizeInput * (pctMainCounter / 100)) - buffersAmt : 0;
-        let amtSec = rallySizeInput ? Math.round(rallySizeInput * (pctSecCounter / 100)) : 0;
-        if (hasSiege && rallySizeInput) {
-            siegeAmt = Math.round(rallySizeInput * 0.05);
-            amtMain -= siegeAmt;
-        }
+        let amtMain = Math.round(availableRally * (pctMainCounter / 100)) - buffersAmt;
+        let amtSec = availableRally - (amtMain + buffersAmt); // El resto para la secundaria para asegurar que sume el total
+
         if (amtMain < 0) amtMain = 0;
+        if (amtSec < 0) amtSec = 0;
 
-        sendComps.push({ name: mainCounter.name, sys: mainCounter.sys, pct: pctMainCounter, amount: amtMain });
-        sendComps.push({ name: secCounter.name, sys: secCounter.sys, pct: pctSecCounter, amount: amtSec });
+        // Ajustar porcentajes visuales para que incluyan el asedio si existe
+        let displayPctMain = hasSiege ? Math.round(pctMainCounter * 0.95) : pctMainCounter;
+        let displayPctSec = hasSiege ? Math.round(pctSecCounter * 0.95) : pctSecCounter;
+
+        sendComps.push({ name: mainCounter.name, sys: mainCounter.sys, pct: displayPctMain, amount: amtMain });
+        sendComps.push({ name: secCounter.name, sys: secCounter.sys, pct: displayPctSec, amount: amtSec });
         if (hasSiege) {
             sendComps.push({ name: "Asedio", sys: "siege", pct: 5, amount: siegeAmt });
         }
@@ -458,7 +462,11 @@ function calculateStrategy() {
     }
 
     sendComps.forEach(comp => {
-        let valText = rallySizeInput && comp.amount > 0 ? (new Intl.NumberFormat('es-ES').format(comp.amount)) : "&mdash;";
+        let valText = "&mdash;";
+        if (rallySizeInput && comp.amount > 0) {
+            // Redondear a miles (k) según petición del usuario
+            valText = Math.round(comp.amount / 1000) + "k";
+        }
         let isMain = comp.sys === mainCounter.sys;
         let tierText = isMain || (!hasSiege && comp.sys !== "siege") ? "<br><small style='color:#ccc'>(Enviar Tier más alto: T4/T5)</small>" : "";
         if (comp.sys === "siege") tierText = "";
