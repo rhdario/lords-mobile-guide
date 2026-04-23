@@ -10,7 +10,7 @@ Para que tu web aparezca al buscar **"Guía Lords Mobile"** (término general), 
 
 ### A. Registro en Google Search Console
 1.  Ve a: [Google Search Console](https://search.google.com/search-console)
-2.  Añade tu sitio: `https://lords-mobile-guide.netlify.app/`
+2.  Añade tu sitio: `https://guialordsmobile.netlify.app/`
 3.  **Verificación:** Elige el método de "Archivo HTML". Descárgalo y dime que lo suba a tu carpeta raíz.
 4.  **Resultado:** Google empezará a indexar todas tus subpáginas (Cacería y Rallies).
 
