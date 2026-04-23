@@ -20,10 +20,11 @@ Para que tu web aparezca al buscar **"Guía Lords Mobile"** (término general), 
 3.  Busca el **ID de medición** (formato: `G-XXXXXXXXXX`).
 4.  **Pásame el ID**: Yo lo insertaré en el código para que veas cuánta gente entra.
 
-### C. Optimización de Contenido (Lo que haremos aquí)
-- [ ] **Sitemap:** Generar `sitemap.xml` para que Google no se pierda.
-- [ ] **Robots:** Crear `robots.txt` para guiar a los buscadores.
-- [ ] **JSON-LD:** Inyectar datos estructurados para aparecer con mejor diseño en Google.
+### C. Optimización de Contenido (Completado ✅)
+- ✅ **Sitemap:** Generado `sitemap.xml` y enviado a Search Console.
+- ✅ **Robots:** Creado `robots.txt` para guiar a los buscadores.
+- ✅ **JSON-LD:** Inyectados datos estructurados de "SoftwareApplication" y "WebSite".
+- ✅ **Branding:** Configurado Favicon y `og:site_name` para que no salga "Netlify" en Google.
 
 ---
 
@@ -45,7 +46,10 @@ Para evitar que el historial "se borre", seguimos este sistema de archivos:
 ---
 
 ## 📅 HISTORIAL DE LOGROS RECIENTES (v1.2)
-- ✅ Implementación de Meta Tags y Open Graph (SEO Inicial).
+- ✅ Implementación de Meta Tags y Open Graph (SEO Avanzado y Snippet).
+- ✅ Configuración de Google Search Console y GA4.
+- ✅ Generación de Sitemap.xml y Robots.txt.
+- ✅ Optimización de "Site Name" y Favicon para Google Search.
 - ✅ Soporte para tropas T5 en el optimizador.
 - ✅ Lógica de batallones (redondeo a múltiplos de 4).
 - ✅ Terminología PS (Vida) actualizada.

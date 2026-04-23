@@ -108,5 +108,14 @@ Estructura JSON embebida en `caceria/index.html`:
 - **Actualización de Drops:** Los datos de cacería provienen de una extracción de Excel (lógica documentada en el resumen original de Cacería).
 
 ---
+
+## 📈 6. SEO Y ANALÍTICA
+- **Google Search Console:** Propiedad verificada mediante etiqueta HTML.
+- **Google Analytics 4:** ID `G-022ZVESV18` integrado en el `head` de todas las páginas principales.
+- **Indexación:** Sitemap XML dinámico y `robots.txt` configurados en el raíz.
+- **Datos Estructurados:** Implementación de JSON-LD (`SoftwareApplication` y `WebSite`) para mejorar el ranking y la apariencia en Google.
+- **Branding:** Favicon dinámico (PNG) y `og:site_name` configurados para visualización premium en buscadores y redes sociales.
+
+---
 © Lords Mobile Guide - by knayus  
 **Versión Final Unificada:** 1.2 (Abril 2026)
